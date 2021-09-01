@@ -4,7 +4,7 @@
   </div>
 </div>
 <br>
-<div class="container bg-danger bg-gradient">
+<div class="container-fluid bg-danger bg-gradient">
   <div class="d-flex justify-content-center">
     <ul class="list-group mx-auto justify-content-center align-items-center"  *ngIf="counters.length > 0">
       <p class="bg-danger bg-gradient m-1">Counters</p>
@@ -14,7 +14,7 @@
   </div>
 </div>
 <br>
-<div class="container-fluid">
+<div class="container-fluid bg-primary bg-gradient">
   <div class="d-flex justify-content-center bg-primary bg-gradient">
     <ul class="list-group mx-auto justify-content-center align-items-center" *ngIf="superCounter.length > 0">
       <app-super-counter  *ngFor="let count of superCounter" [superC]="count"></app-super-counter>
@@ -22,7 +22,7 @@
   </div>
 </div>
 <br>
-<div class="container-fluid">
+<div class="container-fluid bg-warning bg-gradient">
   <div class="d-flex justify-content-center bg-warning bg-gradient">
     <ul class="list-group mx-auto justify-content-center align-items-center" *ngIf="superDuperCounter.length > 0">
       <app-super-duper-counter [create]="create" *ngFor="let count of superDuperCounter" [superDC]="count"></app-super-duper-counter>

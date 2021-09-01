@@ -7,7 +7,7 @@ import { Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
 })
 export class SuperDuperCounterComponent implements OnInit {
   @Input() superDC: any
-  @Input() create: () => void
+  @Input() create: () => {}
   // @Output() create: EventEmitter<any> = new EventEmitter()
   timeInterval: any;
 
