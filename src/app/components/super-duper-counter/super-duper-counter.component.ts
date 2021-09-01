@@ -18,6 +18,9 @@ export class SuperDuperCounterComponent implements OnInit {
   }
 
   startTC(count: any){
+    if(this.timeInterval){
+      return
+    }
     this.timeInterval = setInterval(()=>{
       count.value += 1
       if(count.value%20 === 0){
@@ -28,6 +31,7 @@ export class SuperDuperCounterComponent implements OnInit {
 
   stop(){
     clearInterval(this.timeInterval)
+    this.timeInterval= '';
   }
 
 }
