@@ -12,13 +12,13 @@ export class CounterComponent implements OnInit {
   superCounter: any[] = []
   superDuperCounter: any[] = []
   timeInterval: any;
-
+  passComponent: {};
   constructor() { }
 
   ngOnInit(): void {
   }
 
-  create(){
+  create = () =>{
     if(this.counters.length >= 3){
       let values = this.counters.splice(0, 3)
       let addedValues: number = 0

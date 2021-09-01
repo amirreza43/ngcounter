@@ -1,4 +1,4 @@
-import { ComponentFixture, fakeAsync, TestBed, tick } from '@angular/core/testing';
+import { ComponentFixture, discardPeriodicTasks, fakeAsync, flush, TestBed, tick } from '@angular/core/testing';
 
 import { CounterComponent } from './counter.component';
 
@@ -97,7 +97,6 @@ describe('CounterComponent', () => {
     crtBtn.click()
 
     component.decr(fixture.componentInstance.superCounter[0].value, 1);
-    console.log(fixture.componentInstance.superCounter[0].value);
 
     expect(fixture.componentInstance.superCounter[0].value).toEqual(0)
   })
@@ -119,19 +118,23 @@ describe('CounterComponent', () => {
   it('when we have 2 counters and 2 super counter and crate button is clicked, a super duper counter will be added', ()=>{
     const crtBtn = fixture.nativeElement.querySelector('#createBtn')
 
-    //super
-    crtBtn.click()
-    crtBtn.click()
-    crtBtn.click()
-    //super
-    crtBtn.click()
-    crtBtn.click()
-    crtBtn.click()
-    //counter
-    crtBtn.click()
-    crtBtn.click()
-    //initiates super duper
-    crtBtn.click()
+     //super
+     crtBtn.click()
+     crtBtn.click()
+     crtBtn.click()
+     crtBtn.click()
+     //super
+     crtBtn.click()
+     crtBtn.click()
+     crtBtn.click()
+     crtBtn.click()
+     //counter
+     crtBtn.click()
+     crtBtn.click()
+     crtBtn.click()
+     crtBtn.click()
+     //initiates super duper
+     crtBtn.click()
 
 
     expect(fixture.componentInstance.superDuperCounter.length).toEqual(1)
@@ -144,46 +147,53 @@ describe('CounterComponent', () => {
     crtBtn.click()
     crtBtn.click()
     crtBtn.click()
-    component.incr(fixture.componentInstance.superCounter[0], 1)
-    component.incr(fixture.componentInstance.superCounter[0], 1)
-    component.incr(fixture.componentInstance.superCounter[0], 1)
+    crtBtn.click()
+    component.incr(fixture.componentInstance.superCounter[0], 1);
+    component.incr(fixture.componentInstance.superCounter[0], 1);
     //super
     crtBtn.click()
     crtBtn.click()
     crtBtn.click()
-    component.incr(fixture.componentInstance.superCounter[0], 1)
-    component.incr(fixture.componentInstance.superCounter[0], 1)
+    crtBtn.click()
+    component.incr(fixture.componentInstance.superCounter[1], 1);
     //counter
+    crtBtn.click()
+    crtBtn.click()
     crtBtn.click()
     crtBtn.click()
     //initiates super duper
     crtBtn.click()
 
-    expect(fixture.componentInstance.superDuperCounter[0].value).toEqual(15)
+    expect(fixture.componentInstance.superDuperCounter[0].value).toEqual(9)
   })
 
-  it('a Super Duper Counter with value of 0 When the start button is clicked Then the counter will automatically increment its value by 1 every second', <any>fakeAsync(()=>{
+  it('a Super Duper Counter with value of 0 When the start button is clicked Then the counter will automatically increment its value by 1 every second', <any>fakeAsync(() : void=>{
     const crtBtn = fixture.nativeElement.querySelector('#createBtn')
 
     //super
     crtBtn.click()
     crtBtn.click()
     crtBtn.click()
+    crtBtn.click()
     //super
+    crtBtn.click()
     crtBtn.click()
     crtBtn.click()
     crtBtn.click()
     //counter
     crtBtn.click()
     crtBtn.click()
+    crtBtn.click()
+    crtBtn.click()
     //initiates super duper
     crtBtn.click()
 
     component.startTC(fixture.componentInstance.superDuperCounter[0])
-    tick(1000)
-    expect(fixture.componentInstance.superDuperCounter[0].value).toEqual(1)
+    tick(1000);
+    expect(fixture.componentInstance.superDuperCounter[0].value).toBe(1)
 
+    flush();
+    discardPeriodicTasks();
   }))
-
 
 });

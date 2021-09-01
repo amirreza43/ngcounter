@@ -1,30 +1,32 @@
 <div class="container">
   <div class="d-flex justify-content-center">
     <button id="createBtn" (click)="create()" class="btn btn-success">Create</button><br>
-
   </div>
 </div>
-<div class="container">
-  <ul class="list-group mx-auto justify-content-center align-items-center">
-    <li class="list-group-item" *ngFor="let count of counters">
-      <button id="decrBtn" (click)="decr(count, 0)" class="btn btn-danger">-</button>    {{count.value}}    <button id="incrBtn" (click)="incr(count, 0)" class="btn btn-primary">+</button></li>
-  </ul>
-</div>
-<div class="container">
-  <div class="d-flex justify-content-center ">
-    <ul class="list-group mx-auto justify-content-center align-items-center" *ngIf="superCounter.length > 0">
-      <h3>Super Counters</h3>
-      <li class="list-group-item" *ngFor="let count of superCounter">
-        <button (click)="decr(count, 1)" class="btn btn-danger">-</button>    {{count.value}}    <button  (click)="incr(count, 1)" class="btn btn-primary">+</button></li>
+<br>
+<div class="container bg-danger bg-gradient">
+  <div class="d-flex justify-content-center">
+    <ul class="list-group mx-auto justify-content-center align-items-center"  *ngIf="counters.length > 0">
+      <p class="bg-danger bg-gradient m-1">Counters</p>
+      <li class="list-group-item m-1" *ngFor="let count of counters">
+        <button id="decrBtn" (click)="decr(count, 0)" class="btn btn-danger">-</button>    {{count.value}}    <button id="incrBtn" (click)="incr(count, 0)" class="btn btn-primary">+</button></li>
     </ul>
   </div>
 </div>
-<div class="container">
-  <div class="d-flex justify-content-center ">
+<br>
+<div class="container-fluid">
+  <div class="d-flex justify-content-center bg-primary bg-gradient">
+    <ul class="list-group mx-auto justify-content-center align-items-center" *ngIf="superCounter.length > 0">
+      <app-super-counter  *ngFor="let count of superCounter" [superC]="count"></app-super-counter>
+    </ul>
+  </div>
+</div>
+<br>
+<div class="container-fluid">
+  <div class="d-flex justify-content-center bg-warning bg-gradient">
     <ul class="list-group mx-auto justify-content-center align-items-center" *ngIf="superDuperCounter.length > 0">
-      <h3>Super Duper Counters</h3>
-      <li class="list-group-item" *ngFor="let count of superDuperCounter">
-        <button (click)="stop()" class="btn btn-danger">Stop</button>    {{count.value}}    <button  (click)="startTC(count)" class="btn btn-primary">Start</button></li>
+      <app-super-duper-counter [create]="create" *ngFor="let count of superDuperCounter" [superDC]="count"></app-super-duper-counter>
+
     </ul>
   </div>
 </div>
