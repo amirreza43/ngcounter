@@ -1,11 +1,13 @@
 import { TestBed, waitForAsync } from '@angular/core/testing';
 import { AppComponent } from './app.component';
+import { CounterComponent } from './components/counter/counter.component'
 
 describe('AppComponent', () => {
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [
-        AppComponent
+        AppComponent,
+        CounterComponent
       ],
     }).compileComponents();
   }));
@@ -28,4 +30,5 @@ describe('AppComponent', () => {
     const compiled = fixture.debugElement.nativeElement;
     expect(compiled.querySelector('h1').textContent).toContain('Angular Counter');
   });
+
 });
